@@ -34,6 +34,7 @@ def check_mst(adj_mat: np.ndarray,
         for j in range(i+1):
             total += mst[i, j]
     assert approx_equal(total, expected_weight), 'Proposed MST has incorrect expected weight'
+    assert len(mst[np.nonzero(mst)]) == adj_mat.shape[0], 'Proposed MST has incorrect number of edges for the given graph'
 
 
 def test_mst_small():

@@ -41,4 +41,33 @@ class Graph:
         `heapify`, `heappop`, and `heappush` functions.
 
         """
-        self.mst = None
+        #self.mst = None
+        self.mst = np.zeros(self.adj_mat.shape)
+
+        visited = []
+        visited.append(0)
+        h = []
+        row = self.adj_mat[0,:]
+        row_ind = 0
+        insert = row[np.nonzero(row)]
+        
+        for i in insert: 
+            heapq.heappush(h, i)
+        
+        while len(visited) < self.adj_mat.shape[0]:
+            lowest = heapq.heappop(h)
+            dest = np.where(row == lowest)[0][0]
+            # just take the first vertex w that edge weight
+            if dest not in visited:
+                self.mst[row_ind,dest] = lowest
+                row_ind = dest
+                visited.append(dest)
+                
+                row = self.adj_mat[dest,:]
+                insert = row[np.nonzero(row)]
+                for i in insert: 
+                    heapq.heappush(h, i)
+            else: 
+                row = self.adj_mat[np.where(self.adj_mat == lowest)[0][0]]
+                row_ind = np.where(self.adj_mat == lowest)[0][0]
+
