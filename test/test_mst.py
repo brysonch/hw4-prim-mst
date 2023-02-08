@@ -35,6 +35,7 @@ def check_mst(adj_mat: np.ndarray,
             total += mst[i, j]
     assert approx_equal(total, expected_weight), 'Proposed MST has incorrect expected weight'
     assert len(mst[np.nonzero(mst)]) == adj_mat.shape[0], 'Proposed MST has incorrect number of edges for the given graph'
+    assert mst.shape[0] == mst.shape[1], 'Adjacency matrix should be an n x n matrix'
 
 
 def test_mst_small():
@@ -72,4 +73,40 @@ def test_mst_student():
     TODO: Write at least one unit test for MST construction.
     
     """
-    pass
+    file_path_empty = './data/empty.csv'
+    g_empty = Graph(file_path_empty)
+
+    rand_adjmat = np.arange(3, 35, 2)
+    rand_adjmat = np.reshape(rand_adjmat,(4,4))
+    g_rand = Graph(rand_adjmat)
+
+    neg_adjmat = np.arange(-35, -3, 2)
+    neg_adjmat = np.reshape(neg_adjmat,(4,4))
+    g_neg = Graph(neg_adjmat)
+
+    disconnected_adjmat = np.zeros((4,4))
+    disconnected_adjmat[0] = 
+
+    try:
+        g_empty.construct_mst()
+        test_empty = False
+    except:
+        test_empty = True
+
+    try:
+        g_rand.construct_mst()
+        test_rand = False
+    except:
+        test_rand = True
+
+    try:
+        g_nonpos.construct_mst()
+        test_neg = False
+    except:
+        test_neg = True
+
+
+    assert test_empty == True, "Empty graph should not return an MST"
+    assert test_rand == True, "Random adjacency matrix with self-edges is not a valid graph"
+    assert test_neg == True, "All edge weights must be positive values"
+
