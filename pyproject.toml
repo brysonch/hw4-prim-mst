@@ -6,11 +6,8 @@ requires = [
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "Prim's algorithm (HW4)"
-authors = [{
-	name = "Bryson Choy",
-	email = "bryson.choy@ucsf.edu"
-	}]
+name = "mst"
+authors = [{name = "Bryson Choy", email = "bryson.choy@ucsf.edu"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
