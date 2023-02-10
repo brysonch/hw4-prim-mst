@@ -44,7 +44,7 @@ class Graph:
         #self.mst = None
         self.mst = np.zeros(self.adj_mat.shape)
 
-        if not self.adj_mat: raise Exception("Input was an empty graph")
+        if self.adj_mat.size == 0: raise Exception("Input was an empty graph")
         if np.any(self.adj_mat.diagonal()): raise Exception("There should be no self-edges in the graph")
         if np.any(self.adj_mat < 0): raise Exception("All edge weights in the graph must be positive values")
         if np.any(self.adj_mat != self.adj_mat.T): raise Exception("The input graph must be a symmetric adjacency matrix")
