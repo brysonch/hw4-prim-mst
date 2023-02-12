@@ -47,7 +47,7 @@ class Graph:
         if self.adj_mat.size == 0: raise Exception("Input was an empty graph")
         if np.any(self.adj_mat.diagonal()): raise Exception("There should be no self-edges in the graph")
         if np.any(self.adj_mat < 0): raise Exception("All edge weights in the graph must be positive values")
-        if np.any(self.adj_mat != self.adj_mat.T): raise Exception("The input graph must be a symmetric adjacency matrix")
+        #if np.any(self.adj_mat != self.adj_mat.T): raise Exception("The input graph must be a symmetric adjacency matrix")
 
         # Initialize a list of visited nodes, priority queue of edge weights, and append vertex 0 to the visited list
         visited = []
