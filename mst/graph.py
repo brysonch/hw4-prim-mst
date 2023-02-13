@@ -76,6 +76,7 @@ class Graph:
             # If the destination node has already been visited, then go back to the row containing the lowest edge weight from the priority queue
             if dest not in visited:
                 self.mst[source,dest] = lowest[0]
+                self.mst[dest,source] = lowest[0]
                 visited.append(dest)
 
                 row = self.adj_mat[dest,:]
